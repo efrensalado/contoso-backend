@@ -27,8 +27,10 @@ async function newUser(data) {
 
     if (result.affectedRows) {
         obj.message = "User Created";
+        obj.status = 201
     } else {
         obj.message = "Error creating a new user";
+        obj.status = 404
     }
 
     return obj;
