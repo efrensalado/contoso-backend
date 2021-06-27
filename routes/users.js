@@ -2,7 +2,11 @@ const express = require('express');
 const router = express.Router();
 const users = require('../services/users');
 
-
+/* 
+* Asignacion de routeo para la constante de routeo
+* la cual se encarga de realizar acciones que se 
+* encuentran declaradas en ./services/users
+*/
 router.get('/', async function (req, res, next) {
     try {
         res.json(await users.getAllUsers(req.query.page));

@@ -1,7 +1,12 @@
+//constantes de config para uso posterior
 const db = require('./databse');
 const helper = require('../helper');
 const config = require('../config');
 
+/**
+ * funcion que ejecuta un select a la tabla users
+ * @returns object
+ */
 async function getAllUsers(page = 1) {
     const offset = helper.getOffset(page, config.listPerPage);
     const rows = await db.query(
@@ -17,6 +22,11 @@ async function getAllUsers(page = 1) {
     }
 }
 
+/**
+ * Funcion que realiza una insercion
+ * @param data object
+ * @returns object
+ */
 async function newUser(data) {
     const result = await db.query(
         "INSERT INTO users VALUES (null, ?, ?, ?)",
@@ -36,6 +46,11 @@ async function newUser(data) {
     return obj;
 }
 
+/**
+ * Funcion que ejecuta el select de un solo user
+ * @param id string || int
+ * @returns object returnData
+ */
 async function getUserById(id) {
     const result = await db.query(
         "SELECT * FROM users WHERE idUser = ?",
@@ -55,6 +70,11 @@ async function getUserById(id) {
     return returnData;
 }
 
+/**
+ * Funcion que ejecuta la consulta para el login
+ * @param username string
+ * @returns object
+ */
 async function login(username) {
     const result = await db.query(
         "SELECT * FROM users WHERE username = ?",
@@ -74,6 +94,8 @@ async function login(username) {
     return returnData;
 }
 
+//exportacion de variables y/o metodos y funciones
+//para uso en otro archivo
 module.exports = {
     getAllUsers,
     newUser,

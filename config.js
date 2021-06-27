@@ -1,5 +1,9 @@
 const env = process.env;
 
+/**
+ * contante que almacena los datos
+ * para el acceso a nuestra base de datos
+ */
 const config = {
     db: {
         host: env.DB_HOST || 'localhost',

@@ -1,8 +1,15 @@
 const express = require('express');
+
+//constante de routeo
 const router = express.Router();
+//contante de servicio data
 const dataT = require('../services/data');
 
-
+/* 
+* Asignacion de routeo para la constante de routeo
+* la cual se encarga de realizar acciones que se 
+* encuentran declaradas en ./services/data
+*/
 router.get('/', async function (req, res, next) {
     try {
         res.json(await dataT.getAllData(req.query.page));

@@ -1,7 +1,12 @@
+//constantes para uso en el archivo
 const db = require('./databse');
 const helper = require('../helper');
 const config = require('../config');
 
+/**
+ * Ejecuta un select para la tabla data 
+ * @returns array object
+ */
 async function getAllData(page = 1) {
     const offset = helper.getOffset(page, config.listPerPage);
     const rows = await db.query(
@@ -17,6 +22,11 @@ async function getAllData(page = 1) {
     }
 }
 
+/**
+ * Realiza insecion de datos en la tabla data
+ * @param data object
+ * @returns object
+ */
 async function newData(data) {
     const result = await db.query(
         "INSERT INTO data VALUES (null, ?, ?, ?, ?, ?, ?)",
@@ -44,6 +54,11 @@ async function newData(data) {
     return message;
 }
 
+/**
+ * Ejecuta un select por id
+ * @param id string || int
+ * @returns object
+ */
 async function getDataById(id) {
     const result = await db.query(
         "SELECT * FROM data WHERE idData = ?",

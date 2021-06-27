@@ -1,7 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+//constante de aplicacion de express
 const app = express();
+//puerto en el que corre el servidor
 const port = 3000;
+//constantes de routeo
 const usersRouter = require('./routes/users');
 const dataRouter = require('./routes/data')
 
@@ -16,6 +19,8 @@ app.get('/', (req, res) => {
     res.json({ 'message': 'ok' });
 });
 
+
+//asignacion de ruta para la constante de routeo
 app.use('/users', usersRouter);
 
 app.use('/data', dataRouter);
@@ -29,6 +34,7 @@ app.use((err, req, res, next) => {
     return;
 });
 
+//ejecucion del servidor
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 });
