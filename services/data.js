@@ -51,7 +51,7 @@ async function newData(data) {
         obj.status = 500;
     }
 
-    return message;
+    return obj;
 }
 
 /**
